@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f766e" />
+  <title>سريع — لوحة تحكم المتاجر والعمولات</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --accent: #f59e0b;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --success: #16a34a;
+      --danger: #dc2626;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      padding: 16px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .badge-status {
+      background: rgba(255,255,255,0.16);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 0 16px 40px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .stat-label { color: var(--muted); font-size: 0.88rem; }
+    .stat-value { font-size: 1.45rem; font-weight: 700; margin-top: 4px; }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+    h2 { margin: 0 0 14px; font-size: 1.15rem; }
+    label { display: block; font-size: 0.9rem; margin-bottom: 4px; font-weight: 600; }
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+      background: #fff;
+    }
+    button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover { background: var(--primary-dark); }
+    button.secondary { background: #334155; }
+    button.danger { background: var(--danger); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    th, td {
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--border);
+      text-align: right;
+    }
+    .table-wrap { overflow-x: auto; }
+    .pill {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: #ecfdf5;
+      color: var(--success);
+    }
+    .muted { color: var(--muted); font-size: 0.88rem; }
+  </style>
+  <!-- مكتبات Firebase Realtime Database (نسخة Compat لسهولة الاستخدام في ملف واحد) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div>
+        <strong>لوحة تحكم المتاجر والعمولات</strong>
+        <div class="muted" style="color:#d1fae5;">نسبة المنصة 10% • صافي المتجر 90%</div>
+      </div>
+      <div id="syncStatus" class="badge-status">جاري التحقق من الاتصال...</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">إجمالي المبيعات</div>
+        <div id="statSales" class="stat-value">0.00</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">عمولة المنصة (10%)</div>
+        <div id="statCommission" class="stat-value">0.00</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">صافي المتاجر (90%)</div>
+        <div id="statMerchantNet" class="stat-value">0.00</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">عدد الطلبات</div>
+        <div id="statOrdersCount" class="stat-value">0</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <section class="card">
+        <h2>إضافة متجر جديد</h2>
+        <form id="storeForm">
+          <label for="storeName">اسم المتجر</label>
+          <input id="storeName" type="text" placeholder="مثال: مطعم الشام السريع" required />
+
+          <label for="storeCategory">التصنيف</label>
+          <input id="storeCategory" type="text" placeholder="مثال: وجبات سريعة / بقالة" required />
+
+          <label for="storePhone">رقم التواصل</label>
+          <input id="storePhone" type="text" placeholder="مثال: 0990000000" />
+
+          <button type="submit">حفظ المتجر</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>إضافة منتج إلى متجر</h2>
+        <form id="productForm">
+          <label for="productStoreId">اختر المتجر</label>
+          <select id="productStoreId" required></select>
+
+          <label for="productName">اسم المنتج</label>
+          <input id="productName" type="text" placeholder="مثال: شاورما دجاج" required />
+
+          <label for="productPrice">السعر</label>
+          <input id="productPrice" type="number" step="0.01" min="0.01" placeholder="مثال: 15.00" required />
+
+          <button type="submit">إضافة المنتج</button>
+        </form>
+      </section>
+    </div>
+
+    <section class="card">
+      <h2>الطلبات الواردة وحساب العمولة</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>المشتري</th>
+              <th>العنوان</th>
+              <th>المتجر</th>
+              <th>الدفع</th>
+              <th>الإجمالي</th>
+              <th>المنصة (10%)</th>
+              <th>المتجر (90%)</th>
+              <th>الحالة</th>
+              <th>تحديث</th>
+            </tr>
+          </thead>
+          <tbody id="ordersBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>المتاجر والمنتجات الحالية</h2>
+      <div id="storesList" class="muted">لا توجد متاجر بعد.</div>
+    </section>
+  </main>
+
+  <script>
+    // =========================================================================
+    // ضع بيانات مشروع Firebase Realtime Database الخاصة بك هنا من Firebase Console
+    // =========================================================================
+    const FIREBASE_CONFIG = {
+      apiKey: "ضع_هنا_API_KEY",
+      authDomain: "ضع_هنا_PROJECT_ID.firebaseapp.com",
+      databaseURL: "https://ضع_هنا_PROJECT_ID-default-rtdb.firebaseio.com",
+      projectId: "ضع_هنا_PROJECT_ID",
+      storageBucket: "ضع_هنا_PROJECT_ID.firebasestorage.app",
+      messagingSenderId: "ضع_هنا_SENDER_ID",
+      appId: "ضع_هنا_APP_ID"
+    };
+
+    const LOCAL_KEY = "saree_platform_data_v1";
+    const COMMISSION_RATE = 0.10;
+    const MERCHANT_RATE = 0.90;
+
+    let state = loadLocalState();
+    let db = null;
+    let isFirebaseReady = false;
+
+    function loadLocalState() {
+      try {
+        const raw = localStorage.getItem(LOCAL_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          return {
+            stores: parsed.stores || [],
+            products: parsed.products || [],
+            orders: parsed.orders || []
+          };
+        }
+      } catch (e) {}
+      return { stores: [], products: [], orders: [] };
+    }
+
+    function saveLocalState() {
+      try {
+        localStorage.setItem(LOCAL_KEY, JSON.stringify(state));
+      } catch (e) {}
+    }
+
+    function hasValidFirebaseConfig(cfg) {
+      return cfg &&
+        cfg.apiKey && !cfg.apiKey.includes("ضع_هنا") &&
+        cfg.databaseURL && !cfg.databaseURL.includes("ضع_هنا") &&
+        cfg.projectId && !cfg.projectId.includes("ضع_هنا");
+    }
+
+    function initFirebase() {
+      const statusEl = document.getElementById("syncStatus");
+      if (!hasValidFirebaseConfig(FIREBASE_CONFIG) || typeof firebase === "undefined") {
+        statusEl.textContent = "وضع محلي (localStorage)";
+        return;
+      }
+      try {
+        if (!firebase.apps.length) {
+          firebase.initializeApp(FIREBASE_CONFIG);
+        }
+        db = firebase.database();
+        isFirebaseReady = true;
+        statusEl.textContent = "متصل بـ Firebase Realtime";
+
+        db.ref("stores").on("value", (snap) => {
+          const val = snap.val() || {};
+          state.stores = Object.entries(val).map(([id, item]) => ({ id, ...item }));
+          saveLocalState();
+          renderAll();
+        });
+
+        db.ref("products").on("value", (snap) => {
+          const val = snap.val() || {};
+          state.products = Object.entries(val).map(([id, item]) => ({ id, ...item }));
+          saveLocalState();
+          renderAll();
+        });
+
+        db.ref("orders").on("value", (snap) => {
+          const val = snap.val() || {};
+          state.orders = Object.entries(val).map(([id, item]) => ({ id, ...item }));
+          saveLocalState();
+          renderAll();
+        });
+      } catch (err) {
+        statusEl.textContent = "تعذر الاتصال السحابي — وضع محلي";
+      }
+    }
+
+    async function pushRecord(path, payload) {
+      if (isFirebaseReady && db) {
+        await db.ref(path).push(payload);
+      } else {
+        const id = path + "_" + Date.now() + "_" + Math.random().toString(36).slice(2, 6);
+        state[path].push({ id, ...payload });
+        saveLocalState();
+        renderAll();
+      }
+    }
+
+    async function updateOrderStatus(orderId, newStatus) {
+      if (isFirebaseReady && db) {
+        await db.ref("orders/" + orderId).update({ status: newStatus });
+      } else {
+        state.orders = state.orders.map((o) => o.id === orderId ? { ...o, status: newStatus } : o);
+        saveLocalState();
+        renderAll();
+      }
+    }
+
+    document.getElementById("storeForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("storeName").value.trim();
+      const category = document.getElementById("storeCategory").value.trim();
+      const phone = document.getElementById("storePhone").value.trim();
+      if (!name || !category) return;
+
+      await pushRecord("stores", {
+        name,
+        category,
+        phone,
+        createdAt: Date.now()
+      });
+      e.target.reset();
+    });
+
+    document.getElementById("productForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const storeId = document.getElementById("productStoreId").value;
+      const name = document.getElementById("productName").value.trim();
+      const price = parseFloat(document.getElementById("productPrice").value);
+      if (!storeId || !name || isNaN(price) || price <= 0) return;
+
+      await pushRecord("products", {
+        storeId,
+        name,
+        price: Number(price.toFixed(2)),
+        createdAt: Date.now()
+      });
+      e.target.reset();
+    });
+
+    function renderAll() {
+      const selectEl = document.getElementById("productStoreId");
+      selectEl.innerHTML = state.stores.length
+        ? state.stores.map((s) => `<option value="${s.id}">${escapeHtml(s.name)}</option>`).join("")
+        : `<option value="">أضف متجراً أولاً</option>`;
+
+      let totalSales = 0;
+      let totalCommission = 0;
+      let totalMerchantNet = 0;
+
+      state.orders.forEach((o) => {
+        const amt = Number(o.totalAmount || 0);
+        const comm = o.platformCommission !== undefined ? Number(o.platformCommission) : Number((amt * COMMISSION_RATE).toFixed(2));
+        const net = o.merchantNet !== undefined ? Number(o.merchantNet) : Number((amt * MERCHANT_RATE).toFixed(2));
+        totalSales += amt;
+        totalCommission += comm;
+        totalMerchantNet += net;
+      });
+
+      document.getElementById("statSales").textContent = totalSales.toFixed(2);
+      document.getElementById("statCommission").textContent = totalCommission.toFixed(2);
+      document.getElementById("statMerchantNet").textContent = totalMerchantNet.toFixed(2);
+      document.getElementById("statOrdersCount").textContent = String(state.orders.length);
+
+      const storeMap = Object.fromEntries(state.stores.map((s) => [s.id, s.name]));
+      const ordersBody = document.getElementById("ordersBody");
+
+      if (!state.orders.length) {
+        ordersBody.innerHTML = `<tr><td colspan="9" class="muted">لا توجد طلبات حتى الآن.</td></tr>`;
+      } else {
+        const sortedOrders = [...state.orders].sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+        ordersBody.innerHTML = sortedOrders.map((o) => {
+          const amt = Number(o.totalAmount || 0);
+          const comm = o.platformCommission !== undefined ? Number(o.platformCommission) : Number((amt * COMMISSION_RATE).toFixed(2));
+          const net = o.merchantNet !== undefined ? Number(o.merchantNet) : Number((amt * MERCHANT_RATE).toFixed(2));
+          const currentStatus = o.status || "جديد";
+          return `
+            <tr>
+              <td>${escapeHtml(o.buyerName || "عميل")}</td>
+              <td>${escapeHtml(o.buyerLocation || "-")}</td>
+              <td>${escapeHtml(storeMap[o.storeId] || o.storeName || "-")}</td>
+              <td>${escapeHtml(o.paymentMethod || "نقداً")}</td>
+              <td><strong>${amt.toFixed(2)}</strong></td>
+              <td>${comm.toFixed(2)}</td>
+              <td>${net.toFixed(2)}</td>
+              <td><span class="pill">${escapeHtml(currentStatus)}</span></td>
+              <td>
+                <select onchange="updateOrderStatus('${o.id}', this.value)" style="margin:0;padding:6px;">
+                  <option value="جديد" ${currentStatus === "جديد" ? "selected" : ""}>جديد</option>
+                  <option value="قيد التجهيز" ${currentStatus === "قيد التجهيز" ? "selected" : ""}>قيد التجهيز</option>
+                  <option value="في الطريق" ${currentStatus === "في الطريق" ? "selected" : ""}>في الطريق</option>
+                  <option value="مكتمل" ${currentStatus === "مكتمل" ? "selected" : ""}>مكتمل</option>
+                </select>
+              </td>
+            </tr>
+          `;
+        }).join("");
+      }
+
+      const storesListEl = document.getElementById("storesList");
+      if (!state.stores.length) {
+        storesListEl.innerHTML = `<div class="muted">لا توجد متاجر مسجلة بعد.</div>`;
+      } else {
+        storesListEl.innerHTML = state.stores.map((s) => {
+          const prods = state.products.filter((p) => p.storeId === s.id);
+          const prodItems = prods.length
+            ? prods.map((p) => `<li>${escapeHtml(p.name)} — <strong>${Number(p.price).toFixed(2)}</strong></li>`).join("")
+            : `<li class="muted">لا توجد منتجات لهذا المتجر</li>`;
+          return `
+            <div style="border-bottom:1px solid var(--border);padding:10px 0;">
+              <strong>${escapeHtml(s.name)}</strong> <span class="muted">(${escapeHtml(s.category || "")})</span>
+              <ul style="margin:6px 0 0;padding-right:20px;">${prodItems}</ul>
+            </div>
+          `;
+        }).join("");
+      }
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    renderAll();
+    initFirebase();
+  </script>
+</body>
+</html>
