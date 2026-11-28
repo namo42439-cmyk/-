@@ -1,1 +1,108 @@
-(delivery-super-app.html).
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#FF6B00" />
+  <title>سريع للتوصيل</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --orange: #FF6B00;
+      --orange-dark: #E05A00;
+      --orange-soft: #FFF2E8;
+      --navy: #1E2430;
+      --bg: #F6F7F9;
+      --card: #FFFFFF;
+      --text: #1B1F24;
+      --muted: #6C7582;
+      --border: #E5E8EE;
+      --danger: #E53935;
+      --success: #16A34A;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+      background: #ECEFF4;
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .app-shell {
+      width: 100%;
+      max-width: 460px;
+      min-height: 100vh;
+      background: var(--bg);
+      position: relative;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+      overflow-x: hidden;
+      padding-bottom: 84px;
+    }
+
+    .login-screen {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--orange);
+    }
+
+    .login-top {
+      background: var(--orange);
+      padding: 28px 20px 34px;
+      color: #fff;
+      text-align: center;
+      position: relative;
+    }
+
+    .brand-header {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .brand-name {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+      color: #fff;
+    }
+
+    .hammock-art {
+      width: 100%;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    .login-card {
+      flex: 1;
+      background: #F9FAFB;
+      border-top-left-radius: 28px;
+      border-top-right-radius: 28px;
+      padding: 28px 22px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .field-label {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .phone
