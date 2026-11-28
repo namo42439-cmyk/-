@@ -890,9 +890,8 @@
             <div class="otp-box">
               <div style="font-weight:800;font-size:15px;text-align:center;">أدخل الرمز المكون من 4 أرقام</div>
               <div class="otp-inputs">${digits}</div>
-              <div class="otp-hint">للتجربة السريعة يمكنك كتابة أي 4 أرقام أو الضغط على تعبئة تلقائية</div>
-              <div class="otp-actions">
-                <button class="link-btn" onclick="autoFillOtp()">تعبئة تلقائية (1234)</button>
+              <div class="otp-hint">يرجى إدخال الرمز المكون من 4 أرقام لتأكيد رقم الهاتف</div>
+              <div class="otp-actions" style="justify-content:flex-end;">
                 <button class="link-btn" ${state.resendSeconds > 0 ? 'disabled' : ''} onclick="resendOtp()">
                   ${state.resendSeconds > 0 ? `إعادة الإرسال (${state.resendSeconds}ث)` : 'إعادة إرسال الرمز'}
                 </button>
@@ -1076,12 +1075,6 @@
         const prev = document.getElementById(`otp-${idx - 1}`);
         if (prev) prev.focus();
       }
-    }
-
-    function autoFillOtp() {
-      state.otpCode = '1234';
-      state.otpError = '';
-      renderApp();
     }
 
     function resendOtp() {
