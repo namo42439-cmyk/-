@@ -105,4 +105,1111 @@
       display: block;
     }
 
-    .phone
+    .phone-row {
+      display: flex;
+      gap: 10px;
+      direction: ltr;
+      margin-bottom: 10px;
+    }
+
+    .country-box {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 0 14px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--text);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      flex-shrink: 0;
+    }
+
+    .phone-input {
+      flex: 1;
+      height: 54px;
+      background: #FFFFFF;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 0 16px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      outline: none;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      transition: border-color 0.2s;
+    }
+
+    .phone-input:focus {
+      border-color: var(--orange);
+    }
+
+    .error-msg {
+      color: var(--danger);
+      font-size: 13px;
+      font-weight: 700;
+      min-height: 20px;
+      margin-top: 4px;
+    }
+
+    .terms-text {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 18px 0 16px;
+    }
+
+    .terms-text a {
+      color: var(--orange);
+      font-weight: 700;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .btn-dark {
+      width: 100%;
+      height: 54px;
+      border: none;
+      border-radius: 14px;
+      background: var(--navy);
+      color: #FFFFFF;
+      font-family: 'Cairo', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.12s, opacity 0.2s;
+    }
+
+    .btn-dark:active {
+      transform: scale(0.99);
+    }
+
+    .btn-orange {
+      width: 100%;
+      height: 54px;
+      border: none;
+      border-radius: 14px;
+      background: var(--orange);
+      color: #FFFFFF;
+      font-family: 'Cairo', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.12s;
+    }
+
+    .btn-orange:hover {
+      background: var(--orange-dark);
+    }
+
+    .btn-orange:active {
+      transform: scale(0.99);
+    }
+
+    .guest-btn {
+      margin-top: 18px;
+      background: none;
+      border: none;
+      color: #9AA2B1;
+      font-family: 'Cairo', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: underline;
+      cursor: pointer;
+      width: 100%;
+      padding: 6px;
+    }
+
+    .otp-box {
+      background: #fff;
+      border-radius: 22px;
+      padding: 24px 20px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+      margin-top: 8px;
+    }
+
+    .otp-inputs {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      direction: ltr;
+      margin: 18px 0 12px;
+    }
+
+    .otp-digit {
+      width: 54px;
+      height: 58px;
+      border-radius: 14px;
+      border: 1.5px solid var(--border);
+      text-align: center;
+      font-family: 'Cairo', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--text);
+      outline: none;
+      background: #FAFBFC;
+    }
+
+    .otp-digit:focus {
+      border-color: var(--orange);
+      background: #fff;
+    }
+
+    .otp-hint {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .otp-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .link-btn {
+      background: none;
+      border: none;
+      color: var(--orange);
+      font-family: 'Cairo', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .link-btn:disabled {
+      color: #A0A8B5;
+      cursor: default;
+    }
+
+    .profile-setup {
+      min-height: 100vh;
+      background: #FFFFFF;
+      padding: 28px 20px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .setup-title {
+      text-align: center;
+      font-size: 21px;
+      font-weight: 900;
+      margin: 0 0 26px;
+      color: var(--text);
+    }
+
+    .setup-group {
+      margin-bottom: 22px;
+    }
+
+    .setup-label {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .name-input {
+      width: 100%;
+      height: 52px;
+      border: 1.5px solid #2A2F3A;
+      border-radius: 14px;
+      padding: 0 16px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      outline: none;
+    }
+
+    .choice-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .choice-btn {
+      min-width: 104px;
+      height: 48px;
+      padding: 0 18px;
+      border-radius: 14px;
+      border: 1px solid #EEF1F5;
+      background: #F9FAFB;
+      font-family: 'Cairo', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .choice-btn.active {
+      background: var(--orange-soft);
+      border-color: var(--orange);
+      color: var(--orange);
+      font-weight: 800;
+    }
+
+    .city-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .date-box {
+      width: 100%;
+      height: 52px;
+      background: #F9FAFB;
+      border: 1px solid #EEF1F5;
+      border-radius: 14px;
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .date-box input[type="date"] {
+      border: none;
+      background: transparent;
+      font-family: 'Cairo', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      outline: none;
+      width: 100%;
+    }
+
+    .top-orange-header {
+      background: var(--orange);
+      padding: 14px 16px 18px;
+      color: #fff;
+      border-bottom-left-radius: 22px;
+      border-bottom-right-radius: 22px;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .icon-circle-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      border: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .location-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.16);
+      padding: 6px 12px;
+      border-radius: 999px;
+    }
+
+    .search-box {
+      background: #fff;
+      border-radius: 14px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      gap: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .promo-banner {
+      margin-top: 14px;
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 16px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .promo-title {
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 1.3;
+    }
+
+    .promo-sub {
+      font-size: 12px;
+      opacity: 0.95;
+      margin-top: 2px;
+    }
+
+    .categories-strip {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 16px 16px 8px;
+      scrollbar-width: none;
+    }
+
+    .categories-strip::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      min-width: 68px;
+      cursor: pointer;
+    }
+
+    .cat-card {
+      width: 62px;
+      height: 62px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1.5px solid transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+      transition: all 0.15s;
+    }
+
+    .cat-item.active .cat-card {
+      border-color: var(--orange);
+      background: var(--orange-soft);
+    }
+
+    .cat-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .cat-item.active .cat-label {
+      color: var(--orange);
+      font-weight: 800;
+    }
+
+    .section-pad {
+      padding: 8px 16px;
+    }
+
+    .hero-deal {
+      border-radius: 20px;
+      background: linear-gradient(135deg, #7A1414 0%, #B71C1C 55%, #FF6B00 100%);
+      color: #fff;
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 8px 20px rgba(183, 28, 28, 0.2);
+      cursor: pointer;
+    }
+
+    .deal-badge {
+      display: inline-block;
+      background: #FFD54F;
+      color: #2B1200;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 6px;
+    }
+
+    .flash-bar {
+      margin-top: 12px;
+      background: var(--orange);
+      color: #fff;
+      border-radius: 16px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .timer-pill {
+      background: #fff;
+      color: var(--orange);
+      font-weight: 900;
+      font-size: 14px;
+      padding: 4px 12px;
+      border-radius: 10px;
+      direction: ltr;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 14px 0 10px;
+    }
+
+    .section-heading h3 {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .store-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 14px;
+      margin-bottom: 12px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .store-info {
+      flex: 1;
+    }
+
+    .store-title {
+      font-size: 15px;
+      font-weight: 800;
+      margin: 0 0 4px;
+    }
+
+    .store-meta {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .store-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .price-tag {
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--orange);
+    }
+
+    .add-btn {
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 6px 14px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 460px;
+      height: 68px;
+      background: #fff;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      z-index: 40;
+    }
+
+    .nav-btn {
+      border: none;
+      background: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      color: #7D8590;
+      cursor: pointer;
+      padding: 4px 2px;
+    }
+
+    .nav-btn.active {
+      color: var(--orange);
+      font-weight: 900;
+    }
+
+    .nav-badge-mini {
+      background: var(--orange);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 900;
+      padding: 1px 5px;
+      border-radius: 999px;
+      line-height: 1.2;
+    }
+
+    .cart-fab {
+      position: fixed;
+      bottom: 78px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 32px);
+      max-width: 428px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 16px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 10px 24px rgba(30, 36, 48, 0.25);
+      z-index: 35;
+      cursor: pointer;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 60;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-sheet {
+      width: 100%;
+      max-width: 460px;
+      background: #fff;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      padding: 20px;
+      max-height: 82vh;
+      overflow-y: auto;
+    }
+
+    .toast {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--navy);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+
+    .toast.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="toast" id="toast"></div>
+  <div class="app-shell" id="app"></div>
+
+  <div class="modal-backdrop" id="cartModal" onclick="closeCartOnBackdrop(event)">
+    <div class="modal-sheet" id="cartSheet"></div>
+  </div>
+
+  <script>
+    const state = {
+      screen: 'login',
+      phone: '0958765416',
+      countryCode: '+963',
+      otpCode: '',
+      resendSeconds: 45,
+      user: {
+        name: 'مصطفى عواد',
+        gender: '',
+        city: 'دمشق',
+        birthDate: '1995-01-01',
+        isGuest: false
+      },
+      genderError: false,
+      phoneError: '',
+      otpError: '',
+      activeTab: 'home',
+      activeCategory: 'all',
+      searchQuery: '',
+      flashSeconds: 24 * 60 + 48,
+      cart: [],
+      orders: [
+        {
+          id: '#SR-4082',
+          item: 'وجبة شاورما عربي دبل',
+          total: 35000,
+          status: 'تم التوصيل'
+        }
+      ]
+    };
+
+    const categories = [
+      { id: 'all', label: 'الكل', type: 'bird' },
+      { id: 'pro', label: 'عروض PRO', badge: 'PRO' },
+      { id: 'deals', label: 'عروض اليوم', badge: 'HOT' },
+      { id: 'restaurants', label: 'مطاعم', emoji: '🍔' },
+      { id: 'grocery', label: 'سوبر ماركت', emoji: '🛒' },
+      { id: 'sweets', label: 'حلويات', emoji: '🍰' }
+    ];
+
+    const items = [
+      { id: 1, title: 'ناش هيت برجر حار جداً', store: 'ناش هيت - فرع المزة', category: 'restaurants', rating: '4.9', time: '25-35 د', price: 42000, emoji: '🌶️' },
+      { id: 2, title: 'شاورما عربي مع بطاطا وثوم', store: 'أبو العبد للشاورما', category: 'restaurants', rating: '4.8', time: '20-30 د', price: 35000, emoji: '🌯' },
+      { id: 3, title: 'سلة خضار وفواكه طازجة', store: 'سريع ماركت - دمشق', category: 'grocery', rating: '4.7', time: '30-40 د', price: 58000, emoji: '🥦' },
+      { id: 4, title: 'بوكس كنافة نابلسية ساخنة', store: 'قصر الحلويات الشرقية', category: 'sweets', rating: '4.9', time: '25-35 د', price: 48000, emoji: '🍮' },
+      { id: 5, title: 'عرض PRO: بيتزا عائلي + مشروب', store: 'بيتزا كينغ سريع', category: 'pro', rating: '4.8', time: '30-45 د', price: 65000, emoji: '🍕' }
+    ];
+
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => el.classList.remove('show'), 2400);
+    }
+
+    function birdLogoSvg(size = 44) {
+      return `<svg width="${size}" height="${size}" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="30" fill="#FFFFFF" fill-opacity="0.96"/><path d="M16 37C16 26.5 24.5 19 35 19C41.5 19 46.5 22.5 49 27.5L56 29L49.5 34.5C48.5 43.5 41 49 31.5 49C22.5 49 16 43.5 16 37Z" fill="#FF6B00"/><path d="M23 35C27 31 34 31 39 35C35 39 27 39 23 35Z" fill="#1E2430"/><circle cx="40" cy="27" r="2.6" fill="#1E2430"/><circle cx="40.8" cy="26.2" r="0.9" fill="#FFFFFF"/></svg>`;
+    }
+
+    function welcomeHammockSvg() {
+      return `<svg class="hammock-art" viewBox="0 0 360 155" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 46C110 112 250 112 316 46" stroke="#1E2430" stroke-width="2.5" stroke-dasharray="4 4"/><path d="M56 54C120 124 240 124 304 54C245 86 115 86 56 54Z" fill="#FFFDF9" stroke="#1E2430" stroke-width="2.5"/><text x="180" y="76" text-anchor="middle" fill="#FF6B00" font-family="Georgia, serif" font-style="italic" font-weight="bold" font-size="22">Welcome</text><g transform="translate(22, 16)"><ellipse cx="24" cy="24" rx="18" ry="15" fill="#FF852E" stroke="#1E2430" stroke-width="2.5"/><circle cx="20" cy="21" r="4.5" fill="#fff" stroke="#1E2430" stroke-width="2"/><circle cx="21" cy="21" r="2" fill="#1E2430"/><circle cx="31" cy="21" r="4.5" fill="#fff" stroke="#1E2430" stroke-width="2"/><circle cx="32" cy="21" r="2" fill="#1E2430"/></g><g transform="translate(154, 10)"><ellipse cx="26" cy="26" rx="20" ry="16" fill="#FF852E" stroke="#1E2430" stroke-width="2.5"/><circle cx="21" cy="23" r="4.5" fill="#fff" stroke="#1E2430" stroke-width="2"/><circle cx="22" cy="23" r="2" fill="#1E2430"/><circle cx="33" cy="23" r="4.5" fill="#fff" stroke="#1E2430" stroke-width="2"/><circle cx="34" cy="23" r="2" fill="#1E2430"/></g><g transform="translate(290, 16)"><ellipse cx="24" cy="24" rx="18" ry="15" fill="#FF852E" stroke="#1E2430" stroke-width="2.5"/><circle cx="19" cy="21" r="4.5" fill="#fff" stroke="#1E2430" stroke-width="2"/><circle cx="20" cy="21" r="2" fill="#1E2430"/><circle cx="30" cy="21" r="4.5" fill="#fff" stroke="#1E2430" stroke-width="2"/><circle cx="31" cy="21" r="2" fill="#1E2430"/></g></svg>`;
+    }
+
+    function syriaFlagSvg() {
+      return `<svg width="26" height="18" viewBox="0 0 26 18" xmlns="http://www.w3.org/2000/svg" style="border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,0.08)"><rect width="26" height="6" y="0" fill="#007A3D"/><rect width="26" height="6" y="6" fill="#FFFFFF"/><rect width="26" height="6" y="12" fill="#000000"/><polygon points="7,7.2 7.7,9.3 9.9,9.3 8.1,10.6 8.8,12.7 7,11.4 5.2,12.7 5.9,10.6 4.1,9.3 6.3,9.3" fill="#CE1126"/><polygon points="13,7.2 13.7,9.3 15.9,9.3 14.1,10.6 14.8,12.7 13,11.4 11.2,12.7 11.9,10.6 10.1,9.3 12.3,9.3" fill="#CE1126"/><polygon points="19,7.2 19.7,9.3 21.9,9.3 20.1,10.6 20.8,12.7 19,11.4 17.2,12.7 17.9,10.6 16.1,9.3 18.3,9.3" fill="#CE1126"/></svg>`;
+    }
+
+    function renderLoginScreen() {
+      return `
+        <div class="login-screen">
+          <div class="login-top">
+            <div class="brand-header">
+              ${birdLogoSvg(46)}
+              <div class="brand-name">سريع للتوصيل</div>
+            </div>
+            ${welcomeHammockSvg()}
+          </div>
+          <div class="login-card">
+            <div>
+              <label class="field-label" for="phoneInput">رقم الهاتف</label>
+              <div class="phone-row">
+                <div class="country-box">
+                  ${syriaFlagSvg()}
+                  <span>${state.countryCode}</span>
+                </div>
+                <input id="phoneInput" class="phone-input" type="tel" inputmode="numeric" maxlength="10" value="${state.phone}" placeholder="0958765416" oninput="onPhoneInput(this.value)" />
+              </div>
+              <div class="error-msg" id="phoneError">${state.phoneError}</div>
+            </div>
+            <div>
+              <div class="terms-text">
+                باختيارك إرسال أو المتابعة كزائر، فإنك توافق على<br/>
+                <a onclick="showToast('تم عرض الشروط والأحكام')">الشروط والأحكام</a> و
+                <a onclick="showToast('تم عرض سياسة الخصوصية')">سياسة الخصوصية</a>
+              </div>
+              <button class="btn-dark" onclick="submitPhone()">تسجيل الدخول</button>
+              <button class="guest-btn" onclick="continueAsGuest()">المتابعة كزائر</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderOtpScreen() {
+      const digits = [0, 1, 2, 3].map((i) => {
+        const val = state.otpCode[i] || '';
+        return `<input class="otp-digit" id="otp-${i}" type="tel" inputmode="numeric" maxlength="1" value="${val}" oninput="onOtpInput(${i}, this.value)" onkeydown="onOtpKeydown(event, ${i})" />`;
+      }).join('');
+
+      return `
+        <div class="login-screen">
+          <div class="login-top" style="padding-bottom:24px;">
+            <div class="brand-header" style="margin-bottom:4px;">
+              ${birdLogoSvg(42)}
+              <div class="brand-name">تأكيد رقم الهاتف</div>
+            </div>
+            <div style="font-size:13px;opacity:0.95;">
+              تم إرسال رمز التحقق إلى <strong dir="ltr">${state.countryCode} ${state.phone}</strong>
+            </div>
+          </div>
+          <div class="login-card">
+            <div class="otp-box">
+              <div style="font-weight:800;font-size:15px;text-align:center;">أدخل الرمز المكون من 4 أرقام</div>
+              <div class="otp-inputs">${digits}</div>
+              <div class="otp-hint">للتجربة السريعة يمكنك كتابة أي 4 أرقام أو الضغط على تعبئة تلقائية</div>
+              <div class="otp-actions">
+                <button class="link-btn" onclick="autoFillOtp()">تعبئة تلقائية (1234)</button>
+                <button class="link-btn" ${state.resendSeconds > 0 ? 'disabled' : ''} onclick="resendOtp()">
+                  ${state.resendSeconds > 0 ? `إعادة الإرسال (${state.resendSeconds}ث)` : 'إعادة إرسال الرمز'}
+                </button>
+              </div>
+              <div class="error-msg" style="text-align:center;">${state.otpError}</div>
+              <button class="btn-orange" onclick="verifyOtp()">تأكيد الكود</button>
+            </div>
+            <button class="guest-btn" onclick="backToPhone()">تغيير رقم الهاتف</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderProfileSetupScreen() {
+      const cities = ['دمشق', 'حلب', 'اللاذقية', 'طرطوس', 'حمص'];
+      return `
+        <div class="profile-setup">
+          <div>
+            <h2 class="setup-title">المعلومات الشخصية</h2>
+            <div class="setup-group">
+              <label class="setup-label" for="nameInput">الاسم</label>
+              <input id="nameInput" class="name-input" type="text" value="${state.user.name}" placeholder="أدخل اسمك الكامل" oninput="state.user.name = this.value" />
+            </div>
+            <div class="setup-group">
+              <span class="setup-label">الجنس</span>
+              <div class="choice-row">
+                <button type="button" class="choice-btn ${state.user.gender === 'female' ? 'active' : ''}" onclick="selectGender('female')">أنثى</button>
+                <button type="button" class="choice-btn ${state.user.gender === 'male' ? 'active' : ''}" onclick="selectGender('male')">ذكر</button>
+              </div>
+              <div class="error-msg">${state.genderError ? 'جنس غير صالح' : ''}</div>
+            </div>
+            <div class="setup-group">
+              <span class="setup-label">المدينة</span>
+              <div class="city-grid">
+                ${cities.map((c) => `<button type="button" class="choice-btn ${state.user.city === c ? 'active' : ''}" onclick="selectCity('${c}')">${c}</button>`).join('')}
+              </div>
+            </div>
+            <div class="setup-group">
+              <span class="setup-label">تاريخ الميلاد (اختياري)</span>
+              <div class="date-box">
+                <input type="date" value="${state.user.birthDate}" onchange="state.user.birthDate = this.value" />
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn-orange" onclick="completeProfile()">التالي</button>
+        </div>
+      `;
+    }
+
+    function renderMainContent() {
+      if (state.activeTab === 'orders') {
+        return `<div class="section-pad" style="padding-top:18px;"><h3 style="margin:0 0 12px;font-size:18px;font-weight:900;">طلباتي</h3>${state.orders.map((o) => `<div class="store-card"><div class="store-info"><div class="store-title">${o.item} <span style="color:var(--muted);font-size:12px;">${o.id}</span></div><div class="store-meta"><span style="color:var(--success);font-weight:800;">● ${o.status}</span><span>المجموع: ${o.total.toLocaleString()} ل.س</span></div></div></div>`).join('')}</div>`;
+      }
+      if (state.activeTab === 'account') {
+        const displayName = state.user.isGuest ? 'زائر سريع' : (state.user.name || 'مستخدم سريع');
+        return `<div class="section-pad" style="padding-top:18px;"><div class="store-card" style="flex-direction:column;align-items:stretch;"><div style="display:flex;align-items:center;gap:12px;">${birdLogoSvg(50)}<div><div style="font-size:16px;font-weight:900;">${displayName}</div><div style="font-size:12px;color:var(--muted);">${state.user.isGuest ? 'وضع التصفح كزائر' : `${state.countryCode} ${state.phone} • ${state.user.city}`}</div></div></div><hr style="border:none;border-top:1px solid var(--border);margin:14px 0;" /><div style="font-size:13px;line-height:1.9;color:var(--text);"><div><strong>التطبيق:</strong> سريع للتوصيل</div><div><strong>المدينة الحالية:</strong> ${state.user.city}</div><div><strong>الجنس:</strong> ${state.user.gender === 'male' ? 'ذكر' : state.user.gender === 'female' ? 'أنثى' : 'غير محدد'}</div></div><button class="btn-dark" style="margin-top:16px;height:46px;font-size:14px;" onclick="logoutToLogin()">تسجيل الخروج / تغيير الحساب</button></div></div>`;
+      }
+      if (state.activeTab === 'pro') {
+        return `<div class="section-pad" style="padding-top:18px;"><div class="hero-deal" style="background:linear-gradient(135deg,#1E2430,#FF6B00);"><div><span class="deal-badge">سريع PRO</span><div style="font-size:18px;font-weight:900;">توصيل مجاني وخصومات حصرية</div><div style="font-size:12px;opacity:0.9;margin-top:4px;">وفّر أكثر على طلبات الطعام والسوبر ماركت</div></div><div style="font-size:32px;">👑</div></div></div>`;
+      }
+      if (state.activeTab === 'pay') {
+        return `<div class="section-pad" style="padding-top:18px;"><div class="store-card" style="flex-direction:column;align-items:flex-start;"><div style="font-size:16px;font-weight:900;">محفظة سريع باي</div><div style="font-size:24px;font-weight:900;color:var(--orange);margin:8px 0;">120,000 ل.س</div><div style="font-size:12px;color:var(--muted);">رصيد جاهز للدفع الفوري عند الطلب</div></div></div>`;
+      }
+      if (state.activeTab === 'wdi') {
+        return `<div class="section-pad" style="padding-top:18px;"><div class="store-card" style="flex-direction:column;align-items:flex-start;"><div style="font-size:16px;font-weight:900;">خدمة ودّي السريعة</div><div style="font-size:13px;color:var(--muted);margin-top:4px;">إرسال واستلام الطرود والمستندات داخل ${state.user.city} خلال دقائق.</div><button class="btn-orange" style="margin-top:14px;height:44px;font-size:14px;" onclick="showToast('تم إنشاء طلب توصيل طرد عبر ودّي')">اطلب مندوب الآن</button></div></div>`;
+      }
+
+      const mins = String(Math.floor(state.flashSeconds / 60)).padStart(2, '0');
+      const secs = String(state.flashSeconds % 60).padStart(2, '0');
+      const filtered = items.filter((it) => {
+        const matchesCat = state.activeCategory === 'all' || it.category === state.activeCategory;
+        const q = state.searchQuery.trim();
+        const matchesSearch = !q || it.title.includes(q) || it.store.includes(q);
+        return matchesCat && matchesSearch;
+      });
+
+      return `
+        <div class="top-orange-header">
+          <div class="top-bar">
+            <button class="icon-circle-btn" onclick="showToast('لا توجد إشعارات جديدة حالياً')" aria-label="الإشعارات">🔔</button>
+            <div class="location-pill" onclick="cycleCity()"><span>📍</span><span>الموقع الحالي: ${state.user.city}</span><span>⌄</span></div>
+          </div>
+          <div class="search-box">
+            <span>🔍</span>
+            <input type="text" value="${state.searchQuery}" placeholder="ابحث عن شاورما، برجر، سوبر ماركت..." oninput="state.searchQuery = this.value; renderApp();" />
+          </div>
+          <div class="promo-banner">
+            <div><div class="promo-title">4 توصيلات مجانية 🛵</div><div class="promo-sub">استمتع بتوصيل مجاني لأول 4 طلبات في سريع للتوصيل!</div></div>
+            <div style="font-size:28px;">🎟️</div>
+          </div>
+        </div>
+        <div class="categories-strip">
+          ${categories.map((cat) => `<div class="cat-item ${state.activeCategory === cat.id ? 'active' : ''}" onclick="selectCategory('${cat.id}')"><div class="cat-card">${cat.type === 'bird' ? birdLogoSvg(42) : cat.badge ? `<span style="font-weight:900;font-size:13px;color:var(--orange);">${cat.badge}</span>` : `<span style="font-size:26px;">${cat.emoji}</span>`}</div><span class="cat-label">${cat.label}</span></div>`).join('')}
+        </div>
+        <div class="section-pad">
+          <div class="hero-deal" onclick="addToCart(1)">
+            <div><span class="deal-badge">عرض خاص</span><div style="font-size:18px;font-weight:900;">ناش هيت - حار جداً</div><div style="font-size:12px;opacity:0.92;margin-top:4px;">اضغط لإضافة الوجبة إلى السلة مباشرة</div></div>
+            <div style="font-size:42px;">🍔</div>
+          </div>
+          <div class="flash-bar">
+            <div style="font-weight:900;font-size:14px;">⚡ لحق حالك! FLASH SALE</div>
+            <div class="timer-pill">${mins} : ${secs}</div>
+          </div>
+          <div class="section-heading">
+            <h3>الأكثر طلباً في ${state.user.city}</h3>
+            <span style="font-size:12px;color:var(--muted);">${filtered.length} خيارات</span>
+          </div>
+          ${filtered.length === 0 ? `<div class="store-card" style="justify-content:center;color:var(--muted);font-size:14px;">لا توجد نتائج مطابقة لبحثك</div>` : filtered.map((item) => `<div class="store-card"><div style="font-size:34px;">${item.emoji}</div><div class="store-info"><div class="store-title">${item.title}</div><div class="store-meta"><span>${item.store}</span><span>⭐ ${item.rating}</span><span>🕒 ${item.time}</span></div><div class="store-price-row"><span class="price-tag">${item.price.toLocaleString()} ل.س</span><button class="add-btn" onclick="addToCart(${item.id})">+ أضف للسلة</button></div></div></div>`).join('')}
+        </div>
+      `;
+    }
+
+    function renderBottomNav() {
+      const totalQty = state.cart.reduce((sum, i) => sum + i.qty, 0);
+      const navs = [
+        { id: 'home', label: 'الرئيسية', icon: '🏠' },
+        { id: 'wdi', label: 'ودّي', icon: '🛵' },
+        { id: 'pro', label: 'سريع برو', icon: '👑' },
+        { id: 'pay', label: 'سريع باي', icon: '💳' },
+        { id: 'orders', label: 'طلباتي', icon: '🧾', badge: state.orders.length },
+        { id: 'account', label: 'حسابك', icon: '👤' }
+      ];
+      const cartFab = totalQty > 0 ? `<div class="cart-fab" onclick="openCart()"><div><strong>عرض السلة (${totalQty})</strong><span style="font-size:12px;opacity:0.85;margin-right:8px;">${state.cart.reduce((s, x) => s + x.price * x.qty, 0).toLocaleString()} ل.س</span></div><span style="background:var(--orange);padding:4px 12px;border-radius:10px;font-weight:800;font-size:13px;">إتمام الطلب</span></div>` : '';
+      return `${cartFab}<nav class="bottom-nav">${navs.map((n) => `<button class="nav-btn ${state.activeTab === n.id ? 'active' : ''}" onclick="switchTab('${n.id}')"><span>${n.icon}</span><span>${n.label}</span>${n.badge ? `<span class="nav-badge-mini">${n.badge}</span>` : ''}</button>`).join('')}</nav>`;
+    }
+
+    function renderApp() {
+      const app = document.getElementById('app');
+      if (state.screen === 'login') app.innerHTML = renderLoginScreen();
+      else if (state.screen === 'otp') app.innerHTML = renderOtpScreen();
+      else if (state.screen === 'profile') app.innerHTML = renderProfileSetupScreen();
+      else app.innerHTML = renderMainContent() + renderBottomNav();
+    }
+
+    function onPhoneInput(val) {
+      state.phone = val.replace(/[^0-9]/g, '');
+      state.phoneError = '';
+      document.getElementById('phoneInput').value = state.phone;
+      document.getElementById('phoneError').textContent = '';
+    }
+
+    function submitPhone() {
+      const cleaned = state.phone.trim();
+      if (cleaned.length < 9) {
+        state.phoneError = 'يرجى إدخال رقم هاتف صحيح مكون من 9 أو 10 أرقام';
+        renderApp();
+        return;
+      }
+      state.phoneError = '';
+      state.otpCode = '';
+      state.otpError = '';
+      state.resendSeconds = 45;
+      state.screen = 'otp';
+      renderApp();
+      showToast('تم إرسال رمز التحقق إلى رقمك');
+    }
+
+    function continueAsGuest() {
+      state.user.isGuest = true;
+      state.screen = 'main';
+      state.activeTab = 'home';
+      renderApp();
+      showToast('مرحباً بك في سريع للتوصيل');
+    }
+
+    function onOtpInput(idx, val) {
+      const digit = val.replace(/[^0-9]/g, '').slice(-1);
+      const arr = state.otpCode.padEnd(4, ' ').split('');
+      arr[idx] = digit || ' ';
+      state.otpCode = arr.join('').trimEnd();
+      state.otpError = '';
+      renderApp();
+      if (digit && idx < 3) {
+        const next = document.getElementById(`otp-${idx + 1}`);
+        if (next) next.focus();
+      }
+    }
+
+    function onOtpKeydown(e, idx) {
+      if (e.key === 'Backspace' && !state.otpCode[idx] && idx > 0) {
+        const prev = document.getElementById(`otp-${idx - 1}`);
+        if (prev) prev.focus();
+      }
+    }
+
+    function autoFillOtp() {
+      state.otpCode = '1234';
+      state.otpError = '';
+      renderApp();
+    }
+
+    function resendOtp() {
+      state.resendSeconds = 45;
+      renderApp();
+      showToast('تمت إعادة إرسال رمز التحقق');
+    }
+
+    function verifyOtp() {
+      if (state.otpCode.replace(/\s/g, '').length < 4) {
+        state.otpError = 'يرجى إدخال رمز التحقق المكون من 4 أرقام';
+        renderApp();
+        return;
+      }
+      state.otpError = '';
+      state.user.isGuest = false;
+      state.screen = 'profile';
+      renderApp();
+    }
+
+    function backToPhone() {
+      state.screen = 'login';
+      renderApp();
+    }
+
+    function selectGender(g) {
+      state.user.gender = g;
+      state.genderError = false;
+      renderApp();
+    }
+
+    function selectCity(city) {
+      state.user.city = city;
+      renderApp();
+    }
+
+    function completeProfile() {
+      if (!state.user.gender) {
+        state.genderError = true;
+        renderApp();
+        return;
+      }
+      if (!state.user.name.trim()) state.user.name = 'مستخدم سريع';
+      state.genderError = false;
+      state.screen = 'main';
+      state.activeTab = 'home';
+      renderApp();
+      showToast(`أهلاً بك يا ${state.user.name} في سريع للتوصيل`);
+    }
+
+    function logoutToLogin() {
+      state.screen = 'login';
+      state.otpCode = '';
+      renderApp();
+    }
+
+    function switchTab(tab) {
+      state.activeTab = tab;
+      renderApp();
+    }
+
+    function selectCategory(catId) {
+      state.activeCategory = catId;
+      renderApp();
+    }
+
+    function cycleCity() {
+      const cities = ['دمشق', 'حلب', 'اللاذقية', 'طرطوس', 'حمص'];
+      const idx = cities.indexOf(state.user.city);
+      state.user.city = cities[(idx + 1) % cities.length];
+      renderApp();
+      showToast(`تم تغيير الموقع إلى ${state.user.city}`);
+    }
+
+    function addToCart(id) {
+      const prod = items.find((x) => x.id === id);
+      if (!prod) return;
+      const existing = state.cart.find((x) => x.id === id);
+      if (existing) existing.qty += 1;
+      else state.cart.push({ ...prod, qty: 1 });
+      renderApp();
+      showToast(`تمت إضافة "${prod.title}" إلى السلة`);
+    }
+
+    function openCart() {
+      const sheet = document.getElementById('cartSheet');
+      const total = state.cart.reduce((s, x) => s + x.price * x.qty, 0);
+      sheet.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;"><h3 style="margin:0;font-size:17px;font-weight:900;">سلة المشتريات</h3><button onclick="closeCart()" style="background:none;border:none;font-size:18px;cursor:pointer;">✕</button></div>${state.cart.map((c) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);"><div><div style="font-weight:800;font-size:14px;">${c.title}</div><div style="font-size:12px;color:var(--muted);">${c.price.toLocaleString()} ل.س × ${c.qty}</div></div><div style="font-weight:900;color:var(--orange);">${(c.price * c.qty).toLocaleString()} ل.س</div></div>`).join('')}<div style="display:flex;justify-content:space-between;margin:16px 0;font-weight:900;font-size:15px;"><span>الإجمالي (التوصيل مجاني)</span><span>${total.toLocaleString()} ل.س</span></div><button class="btn-orange" onclick="checkoutOrder(${total})">تأكيد الطلب الآن</button>`;
+      document.getElementById('cartModal').classList.add('open');
+    }
+
+    function closeCart() {
+      document.getElementById('cartModal').classList.remove('open');
+    }
+
+    function closeCartOnBackdrop(e) {
+      if (e.target.id === 'cartModal') closeCart();
+    }
+
+    function checkoutOrder(total) {
+      if (!state.cart.length) return;
+      state.orders.unshift({
+        id: `#SR-${Math.floor(1000 + Math.random() * 9000)}`,
+        item: state.cart[0].title + (state.cart.length > 1 ? ` + ${state.cart.length - 1} أصناف` : ''),
+        total,
+        status: 'قيد التحضير'
+      });
+      state.cart = [];
+      closeCart();
+      state.activeTab = 'orders';
+      renderApp();
+      showToast('تم إرسال طلبك بنجاح إلى سريع للتوصيل!');
+    }
+
+    setInterval(() => {
+      if (state.flashSeconds > 0) state.flashSeconds -= 1;
+      if (state.screen === 'otp' && state.resendSeconds > 0) state.resendSeconds -= 1;
+      if (state.screen === 'main' && state.activeTab === 'home') {
+        const timerEl = document.querySelector('.timer-pill');
+        if (timerEl) {
+          const m = String(Math.floor(state.flashSeconds / 60)).padStart(2, '0');
+          const s = String(state.flashSeconds % 60).padStart(2, '0');
+          timerEl.textContent = `${m} : ${s}`;
+        }
+      }
+    }, 1000);
+
+    renderApp();
+  </script>
+</body>
+</html>
